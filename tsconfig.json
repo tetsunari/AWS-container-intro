@@ -1,32 +1,86 @@
 {
   "compilerOptions": {
+    /* Language and Environment */
     "target": "ES2022",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": [
-      "es2022"
-    ],
+    "lib": ["es2022"],
+
+    /* Modules */
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["lib/*"],
+      "@config/*": ["config/*"],
+      "@utils/*": ["lib/utils/*"],
+      "@interfaces/*": ["lib/interfaces/*"],
+      "@constructs/*": ["lib/constructs/*"],
+      "@stacks/*": ["lib/stacks/*"]
+    },
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    /* Emit */
     "declaration": true,
+    "declarationMap": true,
+    "outDir": "./lib",
+    "rootDir": "./",
+    "removeComments": false,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "inlineSources": true,
+
+    /* Interop Constraints */
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": false,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "experimentalDecorators": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
     "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": false,
+
+    /* Completeness */
     "skipLibCheck": true,
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
+
+    /* Advanced */
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+
+    /* Experimental */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    /* Node.js specific */
+    "types": ["node", "jest"],
+    "typeRoots": ["./node_modules/@types"]
   },
+  "include": ["bin/**/*", "lib/**/*", "config/**/*", "test/**/*"],
   "exclude": [
     "node_modules",
-    "cdk.out"
-  ]
+    "cdk.out",
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "**/*.test.js",
+    "coverage",
+    ".nyc_output"
+  ],
+  "ts-node": {
+    "prefer-ts-exts": true,
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }
